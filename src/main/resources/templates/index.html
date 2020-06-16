@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Extreme Sports</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="jumbotron text-center text-white">
+    <h1>Extreme Sports</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-4 text-center">
+            <form action="/filter" method="get">
+                <button id="linkButton" type="submit" class="btn btn-success btn-lg">FILTER EVENTS</button>
+            </form>
+        </div>
+        <div class="col-sm-4 text-center">
+            <form action="/create" method="get">
+                <button id="linkButton" type="submit" class="btn btn-success btn-lg">CREATE EVENTS</button>
+            </form>
+        </div>
+        <div class="col-sm-4 text-center">
+            <form action="/update" method="get">
+                <button id="linkButton" type="submit" class="btn btn-success btn-lg">UPDATE EVENTS</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row justify-content-center" style="padding-top:3%">
+        <div class="col-sm-6" align="center">
+            <form method="post">
+                <div class="form-group">
+                    <label>Event ID</label>
+                    <input type="text" class="form-control" id="deleteId" name="deleteId"
+                           placeholder="Enter the ID of the event you want to delete">
+                </div>
+                <p id="warnMsg" th:text="${warnMsg}"></p>
+                <p id="successMsg" th:text="${successMsg}"></p>
+                <button id="formButton" type="submit" class="btn btn-danger" >DELETE</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row" style="padding-top:3%">
+
+        <div class="col-sm-12">
+            <h2 style="text-align:center">All Events</h2>
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th>Country</th>
+                    <th>Region</th>
+                    <th>City</th>
+                    <th>Sport Type</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Cost</th>
+                    <th>ID</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="event : ${events}">
+                    <td th:text="${event.country.name}"></td>
+                    <td th:text="${event.region.name}"></td>
+                    <td th:text="${event.city.name}"></td>
+                    <td th:text="${event.sportType}"></td>
+                    <td th:text="${event.startDate}"></td>
+                    <td th:text="${event.endDate}"></td>
+                    <td th:text="${event.cost}"></td>
+                    <td th:text="${event.id}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

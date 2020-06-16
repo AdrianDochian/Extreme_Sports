@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Extreme Sports</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="jumbotron text-center text-white">
+    <form action="/" method="get">
+        <button id="backButton" type="submit" class="btn btn-success btn-lg">GO BACK</button>
+    </form>
+    <h1>Extreme Sports</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <h2 style="text-align:center">FILTER DATA</h2>
+            <form method="post">
+                <div class="form-group">
+                    <label>Sport types</label>
+                    <input type="text" class="form-control" name="filter"
+                           placeholder="Enter sports you want to find ( COMMA separated )">
+                </div>
+                <div class="form-group">
+                    <label>Start date (optional)</label>
+                    <input type="date" class="form-control" name="startDate" placeholder="Enter the start date">
+                </div>
+                <div class="form-group">
+                    <label>End date (optional)</label>
+                    <input type="date" class="form-control" name="endDate" placeholder="Enter the end date">
+                </div>
+                <p id="warnMsg" th:text="${warnMsg}"></p>
+                <p id="successMsg" th:text="${successMsg}"></p>
+                <button id="formButton" type="submit" class="btn btn-primary">FILTER</button>
+            </form>
+        </div>
+
+        <div class="col-sm-8">
+            <h2 style="text-align:center">Filtered Events</h2>
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th>Country</th>
+                    <th>Region</th>
+                    <th>City</th>
+                    <th>Sport Type</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Cost</th>
+                    <th>ID</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="filteredEvent : ${filteredEvents}">
+                    <td th:text="${filteredEvent.country.name}"></td>
+                    <td th:text="${filteredEvent.region.name}"></td>
+                    <td th:text="${filteredEvent.city.name}"></td>
+                    <td th:text="${filteredEvent.sportType}"></td>
+                    <td th:text="${filteredEvent.startDate}"></td>
+                    <td th:text="${filteredEvent.endDate}"></td>
+                    <td th:text="${filteredEvent.cost}"></td>
+                    <td th:text="${filteredEvent.id}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12">
+            <h2 style="text-align:center">All Events</h2>
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th>Country</th>
+                    <th>Region</th>
+                    <th>City</th>
+                    <th>Sport Type</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Cost</th>
+                    <th>ID</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="event : ${events}">
+                    <td th:text="${event.country.name}"></td>
+                    <td th:text="${event.region.name}"></td>
+                    <td th:text="${event.city.name}"></td>
+                    <td th:text="${event.sportType}"></td>
+                    <td th:text="${event.startDate}"></td>
+                    <td th:text="${event.endDate}"></td>
+                    <td th:text="${event.cost}"></td>
+                    <td th:text="${event.id}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

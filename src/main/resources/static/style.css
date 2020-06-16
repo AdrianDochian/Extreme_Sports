@@ -1,0 +1,53 @@
+body {
+  color: black;
+}
+
+h1 {
+  color: black;
+}
+
+#backButton
+{
+    float:left;
+    color:black;
+}
+
+#backButton:hover
+{
+    color:yellow;
+}
+
+#floatButton
+{
+    float:right;
+}
+
+#warnMsg
+{
+    color:red;
+}
+
+#successMsg
+{
+    color:green;
+}
+
+#centered
+{
+    float:center;
+}
+
+#linkButton
+{
+    color:black;
+}
+
+#linkButton:hover
+{
+    color:yellow;
+}
+
+#optional
+{
+    color:yellow;
+}

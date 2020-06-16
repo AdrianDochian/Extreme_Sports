@@ -1,0 +1,7 @@
+Run "./mvnw spring-boot:run" to start the application
+
+Enter your browser and type "localhost:8080/" in your address bar 
+
+IMPORTANT: "Update" functionality reassigns events ids
+
+
